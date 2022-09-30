@@ -16,6 +16,7 @@ document.querySelector(".continue-btn").addEventListener("click", () =>{
 
 var numberOfInputs = document.querySelectorAll(".input").length;
 var flag = true;
+var numberOfChar = 0;
 
 for(let i= 0 ;i < numberOfInputs ; i++){
     document.querySelectorAll(".input")[i].addEventListener("click", () =>{
@@ -29,7 +30,32 @@ for(let i= 0 ;i < numberOfInputs ; i++){
         }
     })
 }
+document.querySelector("#card-number").addEventListener("keypress", (e) =>{
 
+if(e.which>=48 && e.which<=57){
+    numberOfChar++;
+    addSpace(numberOfChar);
+}else{
+    document.querySelector(".number-error").classList.add("error");
+    document.querySelector(".number-error").classList.remove("error-hide");
+    document.querySelector("#card-number").value = '';
+    numberOfChar =0;
+    
+}
+});
+
+function addSpace(numberOfChar){
+    if(numberOfChar == 5 || numberOfChar == 9 || numberOfChar == 13){
+        document.querySelector("#card-number").value = document.querySelector("#card-number").value+" ";
+    }
+}
+
+
+function checkNumberValid(){
+
+
+    document.querySelector("#card-number").value
+}
 
 function handleClick(){
     
